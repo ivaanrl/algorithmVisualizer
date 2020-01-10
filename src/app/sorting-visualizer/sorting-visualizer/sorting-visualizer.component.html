@@ -1,1 +1,15 @@
-<p>sorting-visualizer works!</p>
+<div class="header">
+  <button (click)="newArray()">New Array</button>
+  <button (click)="mergeSort()">Merge Sort</button>
+  <button (click)="quickSort()">Quick Sort</button>
+</div>
+
+<div class="container">
+  <div
+    class="array-bar"
+    *ngFor="let item of array"
+    style="height: 100px; width: 10px; background-color: purple; "
+    [ngStyle]="{ height: getArrayBarHeight(item) }"
+    id="{{ item }}"
+  ></div>
+</div>

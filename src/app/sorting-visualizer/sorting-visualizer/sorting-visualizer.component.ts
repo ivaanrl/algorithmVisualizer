@@ -11,7 +11,32 @@ export class SortingVisualizerComponent implements OnInit {
   constructor(private sortingVisualizerService: SortingVisualizerService) {}
 
   ngOnInit() {
+    this.newArray();
+  }
+
+  getArrayBarHeight(height) {
+    return `${height}px`;
+  }
+
+  newArray() {
     this.array = this.sortingVisualizerService.newArray();
-    console.log(this.array);
+  }
+
+  mergeSort() {
+    this.sortingVisualizerService.mergeSort(
+      this.array.slice(),
+      document.getElementsByClassName('array-bar') as HTMLCollectionOf<
+        HTMLElement
+      >
+    );
+  }
+
+  quickSort() {
+    this.sortingVisualizerService.quickSort(
+      this.array,
+      document.getElementsByClassName('array-bar') as HTMLCollectionOf<
+        HTMLElement
+      >
+    );
   }
 }
