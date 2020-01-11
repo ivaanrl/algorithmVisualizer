@@ -17,12 +17,12 @@ export class QuickSortService {
       if (array[j] < pivot) {
         i++;
         await this.sleepService.sleep(5);
-        if (i >= 0) arrayBars[i].style.backgroundColor = 'yellow';
-        arrayBars[j].style.backgroundColor = 'yellow';
+        if (i >= 0) arrayBars[i].style.backgroundColor = '#D32F2F';
+        arrayBars[j].style.backgroundColor = '#D32F2F';
 
         await this.sleepService.sleep(10);
-        if (i >= 0) arrayBars[i].style.backgroundColor = 'purple';
-        arrayBars[j].style.backgroundColor = 'purple';
+        if (i >= 0) arrayBars[i].style.backgroundColor = '#1976D2';
+        arrayBars[j].style.backgroundColor = '#1976D2';
 
         [array[i], array[j]] = [array[j], array[i]];
       }

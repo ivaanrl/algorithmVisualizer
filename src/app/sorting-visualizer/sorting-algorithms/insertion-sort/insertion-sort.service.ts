@@ -15,12 +15,12 @@ export class InsertionSortService {
 
       while (j >= 0 && array[j] > key) {
         await this.sleepService.sleep(0.01);
-        arrayBars[j].style.backgroundColor = 'yellow';
-        arrayBars[j + 1].style.backgroundColor = 'yellow';
+        arrayBars[j].style.backgroundColor = '#D32F2F';
+        arrayBars[j + 1].style.backgroundColor = '#D32F2F';
 
         await this.sleepService.sleep(0.01);
-        arrayBars[j].style.backgroundColor = 'purple';
-        arrayBars[j + 1].style.backgroundColor = 'purple';
+        arrayBars[j].style.backgroundColor = '#1976D2';
+        arrayBars[j + 1].style.backgroundColor = '#1976D2';
         array[j + 1] = array[j];
         j = j - 1;
       }

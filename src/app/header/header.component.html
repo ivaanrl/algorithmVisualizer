@@ -1,0 +1,87 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark"
+  style="background-color: #D32F2F"
+>
+  <a class="navbar-brand" href="#">Algorithm Visualizer</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"
+          >Sorting Visualizer <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Searching Visualizer</a>
+      </li>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onClick('newArray')"
+        [disabled]="disableNewArray"
+        style="color: white; background-color: #c62828;"
+      >
+        New Array
+      </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onClick('mergeSort')"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Merge Sort
+      </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onClick('quickSort')"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Quick Sort
+      </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onClick('heapSort')"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Heap Sort
+      </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onClick('bubbleSort')"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Bubble Sort
+      </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onClick('insertionSort')"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Insertion Sort
+      </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onClick('selectionSort')"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Selection Sort
+      </button>
+    </div>
+  </div>
+</nav>

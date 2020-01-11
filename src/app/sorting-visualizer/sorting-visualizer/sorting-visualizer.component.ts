@@ -1,23 +1,80 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SortingVisualizerService } from './sorting-visualizer.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-sorting-visualizer',
   templateUrl: './sorting-visualizer.component.html',
   styleUrls: ['./sorting-visualizer.component.scss']
 })
-export class SortingVisualizerComponent implements OnInit {
+export class SortingVisualizerComponent implements OnInit, OnDestroy {
   array: number[];
   disableButtons = false;
   disableNewArray = false;
-
+  sub: Subscription;
   constructor(private sortingVisualizerService: SortingVisualizerService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.newArray();
+    this.sub = this.sortingVisualizerService.algorithmEmitter.subscribe(
+      async (event: string) => {
+        switch (event) {
+          case 'quickSort': {
+            this.sortingVisualizerService.buttonSwitchEmitter.emit();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            await this.quickSort();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            break;
+          }
+          case 'mergeSort': {
+            this.sortingVisualizerService.buttonSwitchEmitter.emit();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            await this.mergeSort();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            break;
+          }
+          case 'heapSort': {
+            this.sortingVisualizerService.buttonSwitchEmitter.emit();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            await this.heapSort();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            break;
+          }
+          case 'bubbleSort': {
+            this.sortingVisualizerService.buttonSwitchEmitter.emit();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            await this.bubbleSort();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            break;
+          }
+          case 'insertionSort': {
+            this.sortingVisualizerService.buttonSwitchEmitter.emit();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            await this.insertionSort();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            break;
+          }
+          case 'selectionSort': {
+            this.sortingVisualizerService.buttonSwitchEmitter.emit();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            await this.selectionSort();
+            this.sortingVisualizerService.switchNewArrayEmmiter.emit();
+            break;
+          }
+          case 'newArray': {
+            this.newArray();
+            break;
+          }
+        }
+      }
+    );
   }
 
-  getArrayBarHeight(height) {
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  getArrayBarHeight(height: number) {
     return `${height}px`;
   }
 
@@ -29,9 +86,10 @@ export class SortingVisualizerComponent implements OnInit {
       >
     );
     for (let i = 0; i < arrayBars.length; i++) {
-      arrayBars[i].style.backgroundColor = 'purple';
+      arrayBars[i].style.backgroundColor = '#1976D2';
     }
-    this.disableButtons = false;
+
+    this.sortingVisualizerService.buttonSwitchEmitter.emit();
   }
 
   async mergeSort() {
@@ -43,7 +101,7 @@ export class SortingVisualizerComponent implements OnInit {
         HTMLElement
       >
     );
-    this.disableNewArray = false;
+    this.disableButtons = false;
   }
 
   async quickSort() {
@@ -55,7 +113,7 @@ export class SortingVisualizerComponent implements OnInit {
         HTMLElement
       >
     );
-    this.disableNewArray = false;
+    this.disableButtons = false;
   }
 
   async heapSort() {
@@ -67,7 +125,7 @@ export class SortingVisualizerComponent implements OnInit {
         HTMLElement
       >
     );
-    this.disableNewArray = false;
+    this.disableButtons = false;
   }
 
   async bubbleSort() {
@@ -79,7 +137,7 @@ export class SortingVisualizerComponent implements OnInit {
         HTMLElement
       >
     );
-    this.disableNewArray = false;
+    this.disableButtons = false;
   }
 
   async insertionSort() {
@@ -91,17 +149,17 @@ export class SortingVisualizerComponent implements OnInit {
         HTMLElement
       >
     );
-    this.disableNewArray = false;
+    this.disableButtons = false;
   }
-  selectionSort() {
+  async selectionSort() {
     this.disableButtons = true;
     this.disableNewArray = true;
-    this.sortingVisualizerService.selectionSort(
+    await this.sortingVisualizerService.selectionSort(
       this.array,
       document.getElementsByClassName('array-bar') as HTMLCollectionOf<
         HTMLElement
       >
     );
-    this.disableNewArray = false;
+    this.disableButtons = false;
   }
 }

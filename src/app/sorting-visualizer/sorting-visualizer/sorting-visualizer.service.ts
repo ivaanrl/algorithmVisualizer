@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { MergeSortService } from '../sorting-algorithms/merge-sort/merge-sort.service';
 import { QuickSortService } from '../sorting-algorithms/quick-sort/quick-sort.service';
 import { HeapSortService } from '../sorting-algorithms/heap-sort/heap-sort.service';
@@ -9,10 +9,13 @@ import { SelectionSortService } from '../sorting-algorithms/selection-sort/selec
 
 @Injectable({ providedIn: 'root' })
 export class SortingVisualizerService {
-  ANIMATION_SPEED_MS = 3;
-  NUMBER_OF_ARRAY_BARS = 310;
-  PRIMARY_COLOR = 'purple';
-  SECONDARY_COLOR = 'yellow';
+  ANIMATION_SPEED_MS = 1;
+  PRIMARY_COLOR = '#1976D2';
+  SECONDARY_COLOR = '#D32F2F';
+  algorithmEmitter = new EventEmitter();
+  buttonSwitchEmitter = new EventEmitter();
+  switchNewArrayEmmiter = new EventEmitter();
+
   constructor(
     private sleepService: SleepService,
     private mergeSortService: MergeSortService,
@@ -22,6 +25,18 @@ export class SortingVisualizerService {
     private insertionSortService: InsertionSortService,
     private selectionSortService: SelectionSortService
   ) {}
+
+  onAlgorithmEmit(string: string) {
+    this.algorithmEmitter.emit(string);
+  }
+
+  onButtonSwitch() {
+    this.buttonSwitchEmitter.emit();
+  }
+
+  onVisualizeAlgorithm() {
+    this.switchNewArrayEmmiter.emit();
+  }
 
   newArray() {
     const array: number[] = [];
@@ -72,7 +87,7 @@ export class SortingVisualizerService {
     const arr: HTMLElement[] = [].slice.call(arrayBars);
     for (let i = 0; i < arr.length; i++) {
       await this.sleepService.sleep(5);
-      arr[i].style.backgroundColor = 'rgba(131, 225, 91, 1)';
+      arr[i].style.backgroundColor = '#40C4FF';
     }
   }
 
@@ -81,7 +96,7 @@ export class SortingVisualizerService {
     const arr: HTMLElement[] = [].slice.call(arrayBars);
     for (let i = 0; i < arr.length; i++) {
       await this.sleepService.sleep(5);
-      arr[i].style.backgroundColor = 'rgba(131, 225, 91, 1)';
+      arr[i].style.backgroundColor = '#40C4FF';
     }
   }
 
@@ -90,7 +105,7 @@ export class SortingVisualizerService {
     const arr: HTMLElement[] = [].slice.call(arrayBars);
     for (let i = 0; i < arr.length; i++) {
       await this.sleepService.sleep(5);
-      arr[i].style.backgroundColor = 'rgba(131, 225, 91, 1)';
+      arr[i].style.backgroundColor = '#40C4FF';
     }
   }
 
@@ -102,7 +117,7 @@ export class SortingVisualizerService {
     const arr: HTMLElement[] = [].slice.call(arrayBars);
     for (let i = 0; i < arr.length; i++) {
       await this.sleepService.sleep(5);
-      arr[i].style.backgroundColor = 'rgba(131, 225, 91, 1)';
+      arr[i].style.backgroundColor = '#40C4FF';
     }
   }
 
@@ -114,7 +129,7 @@ export class SortingVisualizerService {
     const arr: HTMLElement[] = [].slice.call(arrayBars);
     for (let i = 0; i < arr.length; i++) {
       await this.sleepService.sleep(5);
-      arr[i].style.backgroundColor = 'rgba(131, 225, 91, 1)';
+      arr[i].style.backgroundColor = '#40C4FF';
     }
   }
 }

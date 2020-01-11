@@ -20,12 +20,12 @@ export class SelectionSortService {
 
       if (i !== min) {
         await this.sleepService.sleep(10);
-        arrayBars[i].style.backgroundColor = 'yellow';
-        arrayBars[min].style.backgroundColor = 'yellow';
+        arrayBars[i].style.backgroundColor = '#D32F2F';
+        arrayBars[min].style.backgroundColor = '#D32F2F';
 
         await this.sleepService.sleep(10);
-        arrayBars[i].style.backgroundColor = 'purple';
-        arrayBars[min].style.backgroundColor = 'purple';
+        arrayBars[i].style.backgroundColor = '#1976D2';
+        arrayBars[min].style.backgroundColor = '#1976D2';
 
         [array[i], array[min]] = [array[min], array[i]];
       }

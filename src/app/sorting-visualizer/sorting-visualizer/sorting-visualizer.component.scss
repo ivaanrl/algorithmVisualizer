@@ -1,9 +1,4 @@
-.header {
-  display: flex;
-  justify-content: center;
-}
-
-.container {
+.containe {
   margin-top: 100px;
   display: flex;
   flex-direction: row;
@@ -14,4 +9,8 @@
 
 .array-bar {
   margin: 0 1px;
+}
+
+.btn-header:hover {
+  background-color: #f44336 !important;
 }

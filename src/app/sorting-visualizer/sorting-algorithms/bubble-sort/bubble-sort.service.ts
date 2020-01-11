@@ -10,12 +10,12 @@ export class BubbleSortService {
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < n - i; j++) {
         if (array[j] > array[j + 1]) {
-          await this.sleepService.sleep(0.01);
-          arrayBars[j].style.backgroundColor = 'yellow';
-          arrayBars[j + 1].style.backgroundColor = 'yellow';
-          await this.sleepService.sleep(0.01);
-          arrayBars[j].style.backgroundColor = 'purple';
-          arrayBars[j + 1].style.backgroundColor = 'purple';
+          await this.sleepService.sleep(0.001);
+          arrayBars[j].style.backgroundColor = '#D32F2F';
+          arrayBars[j + 1].style.backgroundColor = '#D32F2F';
+          await this.sleepService.sleep(0.001);
+          arrayBars[j].style.backgroundColor = '#1976D2';
+          arrayBars[j + 1].style.backgroundColor = '#1976D2';
           [array[j], array[j + 1]] = [array[j + 1], array[j]];
         }
       }

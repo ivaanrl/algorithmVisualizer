@@ -36,12 +36,12 @@ export class HeapSortService {
 
     if (largest != i) {
       await this.sleepService.sleep(0.5);
-      arrayBars[i].style.backgroundColor = 'yellow';
-      arrayBars[largest].style.backgroundColor = 'yellow';
+      arrayBars[i].style.backgroundColor = '#D32F2F';
+      arrayBars[largest].style.backgroundColor = '#D32F2F';
 
       await this.sleepService.sleep(0.5);
-      arrayBars[i].style.backgroundColor = 'purple';
-      arrayBars[largest].style.backgroundColor = 'purple';
+      arrayBars[i].style.backgroundColor = '#1976D2';
+      arrayBars[largest].style.backgroundColor = '#1976D2';
       [array[i], array[largest]] = [array[largest], array[i]];
       await this.heapify(array, n, largest, arrayBars);
     }

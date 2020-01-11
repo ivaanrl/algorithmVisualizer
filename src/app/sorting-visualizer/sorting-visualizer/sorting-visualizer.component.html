@@ -1,24 +1,8 @@
-<div class="header">
-  <button (click)="newArray()" [disabled]="disableNewArray">New Array</button>
-  <button (click)="mergeSort()" [disabled]="disableButtons">Merge Sort</button>
-  <button (click)="quickSort()" [disabled]="disableButtons">Quick Sort</button>
-  <button (click)="heapSort()" [disabled]="disableButtons">Heap Sort</button>
-  <button (click)="bubbleSort()" [disabled]="disableButtons">
-    Bubble Sort
-  </button>
-  <button (click)="insertionSort()" [disabled]="disableButtons">
-    Insertion Sort
-  </button>
-  <button (click)="selectionSort()" [disabled]="disableButtons">
-    Selection Sort
-  </button>
-</div>
-
-<div class="container">
+<div class="containe">
   <div
     class="array-bar"
     *ngFor="let item of array"
-    style="height: 100px; width: 10px; background-color: purple; "
+    style="height: 100px; width: 10px; background-color: #1976D2 "
     [ngStyle]="{ height: getArrayBarHeight(item) }"
     id="{{ item }}"
   ></div>
