@@ -1,14 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SortingVisualizerComponent } from './sorting-visualizer/sorting-visualizer/sorting-visualizer.component';
 import { HeaderComponent } from './header/header.component';
+import { SearchingVisualizerComponent } from './searching-visualizer/searching-visualizer.component';
 
 @NgModule({
-  declarations: [AppComponent, SortingVisualizerComponent, HeaderComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    SortingVisualizerComponent,
+    HeaderComponent,
+    SearchingVisualizerComponent
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

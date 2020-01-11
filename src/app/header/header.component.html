@@ -16,16 +16,18 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/sortingVisualizer']"
           >Sorting Visualizer <span class="sr-only">(current)</span></a
         >
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Searching Visualizer</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/searchingVisualizer']"
+          >Searching Visualizer</a
+        >
       </li>
     </div>
-    <div class="navbar-nav ml-auto">
+    <div class="navbar-nav ml-auto" *ngIf="router.url === '/sortingVisualizer'">
       <button
         class="nav-item nav-link btn btn-header mr-3"
         (click)="onClick('newArray')"
@@ -81,6 +83,60 @@
         style="color: white; background-color: #c62828;"
       >
         Selection Sort
+      </button>
+    </div>
+    <div
+      class="navbar-nav ml-auto"
+      *ngIf="router.url === '/searchingVisualizer'"
+    >
+      <form class="form-inline my-2 my-lg-0">
+        <input
+          class="form-control mr-sm-2"
+          type="number"
+          placeholder="Search"
+          aria-label="Search"
+          #searchValue
+        />
+      </form>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onSearch('newArray', searchValue)"
+        [disabled]="disableNewArray"
+        style="color: white; background-color: #c62828;"
+      >
+        New Array
+      </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onSearch('linearSearch', searchValue)"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Linear search
+      </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onSearch('binarySearch', searchValue)"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Binary search
+      </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onSearch('jumpSearch', searchValue)"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Jump search
+      </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onSearch('interpolationSearch', searchValue)"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Interpolation search
       </button>
     </div>
   </div>

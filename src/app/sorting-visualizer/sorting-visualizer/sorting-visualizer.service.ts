@@ -13,8 +13,6 @@ export class SortingVisualizerService {
   PRIMARY_COLOR = '#1976D2';
   SECONDARY_COLOR = '#D32F2F';
   algorithmEmitter = new EventEmitter();
-  buttonSwitchEmitter = new EventEmitter();
-  switchNewArrayEmmiter = new EventEmitter();
 
   constructor(
     private sleepService: SleepService,
@@ -28,14 +26,6 @@ export class SortingVisualizerService {
 
   onAlgorithmEmit(string: string) {
     this.algorithmEmitter.emit(string);
-  }
-
-  onButtonSwitch() {
-    this.buttonSwitchEmitter.emit();
-  }
-
-  onVisualizeAlgorithm() {
-    this.switchNewArrayEmmiter.emit();
   }
 
   newArray() {
