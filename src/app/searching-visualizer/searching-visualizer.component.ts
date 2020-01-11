@@ -50,6 +50,13 @@ export class SearchingVisualizerComponent implements OnInit, OnDestroy {
             this.disableButtonsService.switchNewArrayEmmiter.emit();
             this.disableButtons = false;
             break;
+          case 'exponentialSearch':
+            this.disableButtonsService.buttonSwitchEmitter.emit();
+            this.disableButtonsService.switchNewArrayEmmiter.emit();
+            await this.exponentialSearch(+searchValue);
+            this.disableButtonsService.switchNewArrayEmmiter.emit();
+            this.disableButtons = false;
+            break;
           case 'newArray':
             this.newArray();
             break;
@@ -111,6 +118,16 @@ export class SearchingVisualizerComponent implements OnInit, OnDestroy {
 
   interpolationSearch(searchValue: number) {
     this.searchingVisualizerService.interpolationSearch(
+      this.array,
+      searchValue,
+      document.getElementsByClassName('array-item') as HTMLCollectionOf<
+        HTMLElement
+      >
+    );
+  }
+
+  exponentialSearch(searchValue: number) {
+    this.searchingVisualizerService.exponentialSearch(
       this.array,
       searchValue,
       document.getElementsByClassName('array-item') as HTMLCollectionOf<

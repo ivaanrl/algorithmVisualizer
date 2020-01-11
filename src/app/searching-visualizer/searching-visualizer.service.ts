@@ -5,6 +5,7 @@ import { BinarySearchService } from './searching-algorithms/binary-search/binary
 import { QuickSortService } from '../sorting-visualizer/sorting-algorithms/quick-sort/quick-sort.service';
 import { JumpSearchService } from './searching-algorithms/jump-search/jump-search.service';
 import { InterpolationSearchService } from './searching-algorithms/interpolation-search/interpolation-search.service';
+import { ExponentialSearchService } from './searching-algorithms/exponential-search/exponential-search.service';
 
 @Injectable({ providedIn: 'root' })
 export class SearchingVisualizerService {
@@ -16,7 +17,8 @@ export class SearchingVisualizerService {
     private linearSearchService: LinearSearchService,
     private binarySearchService: BinarySearchService,
     private jumpSearchService: JumpSearchService,
-    private interpolationSearchService: InterpolationSearchService
+    private interpolationSearchService: InterpolationSearchService,
+    private exponentialSearchService: ExponentialSearchService
   ) {}
 
   onEmitSearch(action: string, searchValue: string) {
@@ -94,6 +96,23 @@ export class SearchingVisualizerService {
   ) {
     await this.sortArrayForSearch(array, arrayItems);
     const result = await this.interpolationSearchService.interpolationSearch(
+      array,
+      target,
+      arrayItems
+    );
+    if (result !== -1) {
+      arrayItems[result].style.backgroundColor = '#1976D2';
+      arrayItems[result].style.color = 'white';
+    }
+  }
+
+  async exponentialSearch(
+    array: number[],
+    target: number,
+    arrayItems: HTMLCollectionOf<HTMLElement>
+  ) {
+    await this.sortArrayForSearch(array, arrayItems);
+    const result = await this.exponentialSearchService.exponentialSearch(
       array,
       target,
       arrayItems

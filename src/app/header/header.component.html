@@ -138,6 +138,14 @@
       >
         Interpolation search
       </button>
+      <button
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onSearch('exponentialSearch', searchValue)"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Exponential search
+      </button>
     </div>
   </div>
 </nav>
