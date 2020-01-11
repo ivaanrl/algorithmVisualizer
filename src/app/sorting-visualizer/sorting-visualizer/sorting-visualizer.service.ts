@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { MergeSortService } from '../sorting-algorithms/merge-sort/merge-sort.service';
 import { QuickSortService } from '../sorting-algorithms/quick-sort/quick-sort.service';
-import { async } from '@angular/core/testing';
 import { HeapSortService } from '../sorting-algorithms/heap-sort/heap-sort.service';
 import { SleepService } from 'src/app/shared/sleep.service';
 import { BubbleSortService } from '../sorting-algorithms/bubble-sort/bubble-sort.service';
 import { InsertionSortService } from '../sorting-algorithms/insertion-sort/insertion-sort.service';
+import { SelectionSortService } from '../sorting-algorithms/selection-sort/selection-sort.service';
 
 @Injectable({ providedIn: 'root' })
 export class SortingVisualizerService {
@@ -19,7 +19,8 @@ export class SortingVisualizerService {
     private quickSortService: QuickSortService,
     private heapSortService: HeapSortService,
     private bubbleSortService: BubbleSortService,
-    private insertionSortService: InsertionSortService
+    private insertionSortService: InsertionSortService,
+    private selectionSortService: SelectionSortService
   ) {}
 
   newArray() {
@@ -98,6 +99,18 @@ export class SortingVisualizerService {
     arrayBars: HTMLCollectionOf<HTMLElement>
   ) {
     await this.insertionSortService.insertionSort(array, arrayBars);
+    const arr: HTMLElement[] = [].slice.call(arrayBars);
+    for (let i = 0; i < arr.length; i++) {
+      await this.sleepService.sleep(5);
+      arr[i].style.backgroundColor = 'rgba(131, 225, 91, 1)';
+    }
+  }
+
+  async selectionSort(
+    array: number[],
+    arrayBars: HTMLCollectionOf<HTMLElement>
+  ) {
+    await this.selectionSortService.selectionSort(array, arrayBars);
     const arr: HTMLElement[] = [].slice.call(arrayBars);
     for (let i = 0; i < arr.length; i++) {
       await this.sleepService.sleep(5);

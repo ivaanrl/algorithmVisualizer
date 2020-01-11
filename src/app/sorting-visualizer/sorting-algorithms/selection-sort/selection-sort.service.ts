@@ -1,13 +1,34 @@
 import { Injectable } from '@angular/core';
+import { SleepService } from 'src/app/shared/sleep.service';
 
 @Injectable({ providedIn: 'root' })
 export class SelectionSortService {
-  selectionSort(array: number[]){
-    let n = array.length;
+  constructor(private sleepService: SleepService) {}
 
-    for (let i = 0; i<n -1; i++){
-      let mid_index = i;
-      for (let j = i)
+  async selectionSort(
+    array: number[],
+    arrayBars: HTMLCollectionOf<HTMLElement>
+  ) {
+    for (var i = 0; i < array.length; i++) {
+      let min = i;
+
+      for (var j = i + 1; j < array.length; j++) {
+        if (array[min] > array[j]) {
+          min = j;
+        }
+      }
+
+      if (i !== min) {
+        await this.sleepService.sleep(10);
+        arrayBars[i].style.backgroundColor = 'yellow';
+        arrayBars[min].style.backgroundColor = 'yellow';
+
+        await this.sleepService.sleep(10);
+        arrayBars[i].style.backgroundColor = 'purple';
+        arrayBars[min].style.backgroundColor = 'purple';
+
+        [array[i], array[min]] = [array[min], array[i]];
+      }
     }
   }
 }

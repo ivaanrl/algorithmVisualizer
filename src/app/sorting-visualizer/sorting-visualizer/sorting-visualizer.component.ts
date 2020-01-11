@@ -93,4 +93,15 @@ export class SortingVisualizerComponent implements OnInit {
     );
     this.disableNewArray = false;
   }
+  selectionSort() {
+    this.disableButtons = true;
+    this.disableNewArray = true;
+    this.sortingVisualizerService.selectionSort(
+      this.array,
+      document.getElementsByClassName('array-bar') as HTMLCollectionOf<
+        HTMLElement
+      >
+    );
+    this.disableNewArray = false;
+  }
 }
