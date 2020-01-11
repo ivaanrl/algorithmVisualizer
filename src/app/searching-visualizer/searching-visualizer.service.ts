@@ -6,6 +6,7 @@ import { QuickSortService } from '../sorting-visualizer/sorting-algorithms/quick
 import { JumpSearchService } from './searching-algorithms/jump-search/jump-search.service';
 import { InterpolationSearchService } from './searching-algorithms/interpolation-search/interpolation-search.service';
 import { ExponentialSearchService } from './searching-algorithms/exponential-search/exponential-search.service';
+import { FibonacciSearchService } from './searching-algorithms/fibonacci-search/fibonacci-search.service';
 
 @Injectable({ providedIn: 'root' })
 export class SearchingVisualizerService {
@@ -18,7 +19,8 @@ export class SearchingVisualizerService {
     private binarySearchService: BinarySearchService,
     private jumpSearchService: JumpSearchService,
     private interpolationSearchService: InterpolationSearchService,
-    private exponentialSearchService: ExponentialSearchService
+    private exponentialSearchService: ExponentialSearchService,
+    private fibonacciSearchService: FibonacciSearchService
   ) {}
 
   onEmitSearch(action: string, searchValue: string) {
@@ -113,6 +115,23 @@ export class SearchingVisualizerService {
   ) {
     await this.sortArrayForSearch(array, arrayItems);
     const result = await this.exponentialSearchService.exponentialSearch(
+      array,
+      target,
+      arrayItems
+    );
+    if (result !== -1) {
+      arrayItems[result].style.backgroundColor = '#1976D2';
+      arrayItems[result].style.color = 'white';
+    }
+  }
+
+  async fibonacciSearch(
+    array: number[],
+    target: number,
+    arrayItems: HTMLCollectionOf<HTMLElement>
+  ) {
+    await this.sortArrayForSearch(array, arrayItems);
+    const result = await this.fibonacciSearchService.fibonacciSearch(
       array,
       target,
       arrayItems

@@ -57,6 +57,13 @@ export class SearchingVisualizerComponent implements OnInit, OnDestroy {
             this.disableButtonsService.switchNewArrayEmmiter.emit();
             this.disableButtons = false;
             break;
+          case 'fibonacciSearch':
+            this.disableButtonsService.buttonSwitchEmitter.emit();
+            this.disableButtonsService.switchNewArrayEmmiter.emit();
+            await this.fibonacciSearch(+searchValue);
+            this.disableButtonsService.switchNewArrayEmmiter.emit();
+            this.disableButtons = false;
+            break;
           case 'newArray':
             this.newArray();
             break;
@@ -128,6 +135,16 @@ export class SearchingVisualizerComponent implements OnInit, OnDestroy {
 
   exponentialSearch(searchValue: number) {
     this.searchingVisualizerService.exponentialSearch(
+      this.array,
+      searchValue,
+      document.getElementsByClassName('array-item') as HTMLCollectionOf<
+        HTMLElement
+      >
+    );
+  }
+
+  fibonacciSearch(searchValue: number) {
+    this.searchingVisualizerService.fibonacciSearch(
       this.array,
       searchValue,
       document.getElementsByClassName('array-item') as HTMLCollectionOf<
