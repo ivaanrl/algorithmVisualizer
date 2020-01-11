@@ -39,4 +39,22 @@ export class SortingVisualizerComponent implements OnInit {
       >
     );
   }
+
+  heapSort() {
+    this.sortingVisualizerService.heapSort(
+      this.array,
+      document.getElementsByClassName('array-bar') as HTMLCollectionOf<
+        HTMLElement
+      >
+    );
+  }
+
+  bubbleSort() {
+    this.sortingVisualizerService.bubbleSort(
+      this.array,
+      document.getElementsByClassName('array-bar') as HTMLCollectionOf<
+        HTMLElement
+      >
+    );
+  }
 }

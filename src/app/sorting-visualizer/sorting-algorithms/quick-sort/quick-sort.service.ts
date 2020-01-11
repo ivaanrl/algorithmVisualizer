@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import { SleepService } from 'src/app/shared/sleep.service';
 
 @Injectable({ providedIn: 'root' })
 export class QuickSortService {
+  constructor(private sleepService: SleepService) {}
+
   async partition(
     array: number[],
     startIndex: number,
@@ -13,11 +16,11 @@ export class QuickSortService {
     for (let j = startIndex; j < endIndex; j++) {
       if (array[j] < pivot) {
         i++;
-        await this.sleep(10);
+        await this.sleepService.sleep(5);
         if (i >= 0) arrayBars[i].style.backgroundColor = 'yellow';
         arrayBars[j].style.backgroundColor = 'yellow';
         [array[i], array[j]] = [array[j], array[i]];
-        await this.sleep(10);
+        await this.sleepService.sleep(10);
         if (i >= 0) arrayBars[i].style.backgroundColor = 'purple';
         arrayBars[j].style.backgroundColor = 'purple';
       }
@@ -36,13 +39,8 @@ export class QuickSortService {
   ) {
     if (endIndex < startIndex) return;
     let pi = await this.partition(array, startIndex, endIndex, arrayBars);
-    //Promise.all([
-    await this.quickSort(array, startIndex, pi - 1, arrayBars),
-      await this.quickSort(array, pi + 1, endIndex, arrayBars);
-    //]);
-  }
 
-  sleep(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    await this.quickSort(array, startIndex, pi - 1, arrayBars);
+    await this.quickSort(array, pi + 1, endIndex, arrayBars);
   }
 }
