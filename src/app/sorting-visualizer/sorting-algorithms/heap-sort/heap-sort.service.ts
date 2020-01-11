@@ -38,10 +38,11 @@ export class HeapSortService {
       await this.sleepService.sleep(0.5);
       arrayBars[i].style.backgroundColor = 'yellow';
       arrayBars[largest].style.backgroundColor = 'yellow';
-      [array[i], array[largest]] = [array[largest], array[i]];
+
       await this.sleepService.sleep(0.5);
       arrayBars[i].style.backgroundColor = 'purple';
       arrayBars[largest].style.backgroundColor = 'purple';
+      [array[i], array[largest]] = [array[largest], array[i]];
       await this.heapify(array, n, largest, arrayBars);
     }
   }

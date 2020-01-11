@@ -1,9 +1,14 @@
 <div class="header">
-  <button (click)="newArray()">New Array</button>
-  <button (click)="mergeSort()">Merge Sort</button>
-  <button (click)="quickSort()">Quick Sort</button>
-  <button (click)="heapSort()">Heap Sort</button>
-  <button (click)="bubbleSort()">Bubble Sort</button>
+  <button (click)="newArray()" [disabled]="disableNewArray">New Array</button>
+  <button (click)="mergeSort()" [disabled]="disableButtons">Merge Sort</button>
+  <button (click)="quickSort()" [disabled]="disableButtons">Quick Sort</button>
+  <button (click)="heapSort()" [disabled]="disableButtons">Heap Sort</button>
+  <button (click)="bubbleSort()" [disabled]="disableButtons">
+    Bubble Sort
+  </button>
+  <button (click)="insertionSort()" [disabled]="disableButtons">
+    Insertion Sort
+  </button>
 </div>
 
 <div class="container">

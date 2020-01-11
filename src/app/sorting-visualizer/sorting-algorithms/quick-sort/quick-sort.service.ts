@@ -19,10 +19,12 @@ export class QuickSortService {
         await this.sleepService.sleep(5);
         if (i >= 0) arrayBars[i].style.backgroundColor = 'yellow';
         arrayBars[j].style.backgroundColor = 'yellow';
-        [array[i], array[j]] = [array[j], array[i]];
+
         await this.sleepService.sleep(10);
         if (i >= 0) arrayBars[i].style.backgroundColor = 'purple';
         arrayBars[j].style.backgroundColor = 'purple';
+
+        [array[i], array[j]] = [array[j], array[i]];
       }
     }
 

@@ -5,6 +5,7 @@ import { async } from '@angular/core/testing';
 import { HeapSortService } from '../sorting-algorithms/heap-sort/heap-sort.service';
 import { SleepService } from 'src/app/shared/sleep.service';
 import { BubbleSortService } from '../sorting-algorithms/bubble-sort/bubble-sort.service';
+import { InsertionSortService } from '../sorting-algorithms/insertion-sort/insertion-sort.service';
 
 @Injectable({ providedIn: 'root' })
 export class SortingVisualizerService {
@@ -17,7 +18,8 @@ export class SortingVisualizerService {
     private mergeSortService: MergeSortService,
     private quickSortService: QuickSortService,
     private heapSortService: HeapSortService,
-    private bubbleSortService: BubbleSortService
+    private bubbleSortService: BubbleSortService,
+    private insertionSortService: InsertionSortService
   ) {}
 
   newArray() {
@@ -84,6 +86,18 @@ export class SortingVisualizerService {
 
   async bubbleSort(array: number[], arrayBars: HTMLCollectionOf<HTMLElement>) {
     await this.bubbleSortService.bubbleSort(array, arrayBars);
+    const arr: HTMLElement[] = [].slice.call(arrayBars);
+    for (let i = 0; i < arr.length; i++) {
+      await this.sleepService.sleep(5);
+      arr[i].style.backgroundColor = 'rgba(131, 225, 91, 1)';
+    }
+  }
+
+  async insertionSort(
+    array: number[],
+    arrayBars: HTMLCollectionOf<HTMLElement>
+  ) {
+    await this.insertionSortService.insertionSort(array, arrayBars);
     const arr: HTMLElement[] = [].slice.call(arrayBars);
     for (let i = 0; i < arr.length; i++) {
       await this.sleepService.sleep(5);
