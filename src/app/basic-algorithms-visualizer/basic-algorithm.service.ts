@@ -62,4 +62,28 @@ export class BasicAlgorithmService {
       arrayContainer[i].style.backgroundColor = '#1976d2';
     }
   }
+
+  async fisherYates(
+    array: number[],
+    arrayItems: HTMLCollectionOf<HTMLElement>
+  ) {
+    const len = array.length;
+
+    for (let i = 0; i < len; i++) {
+      let rand = Math.floor(Math.random() * len);
+
+      arrayItems[i].style.backgroundColor = '#D32F2F';
+      arrayItems[i].style.color = 'white';
+      arrayItems[rand].style.backgroundColor = '#D32F2F';
+      arrayItems[rand].style.color = 'white';
+      await this.sleepService.sleep(400);
+      [array[i], array[rand]] = [array[rand], array[i]];
+
+      arrayItems[i].style.backgroundColor = 'white';
+      arrayItems[i].style.color = '#1976d2';
+      arrayItems[rand].style.backgroundColor = 'white';
+      arrayItems[rand].style.color = '#1976d2';
+      await this.sleepService.sleep(400);
+    }
+  }
 }

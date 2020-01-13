@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchingVisualizerComponent } from './searching-visualizer/searching-visualizer.component';
 import { BasicAlgorithmsVisualizerComponent } from './basic-algorithms-visualizer/basic-algorithms-visualizer.component';
 import { CaesarsComponent } from './basic-algorithms-visualizer/caesars/caesars.component';
+import { FisherYatesComponent } from './basic-algorithms-visualizer/fisher-yates/fisher-yates.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CaesarsComponent } from './basic-algorithms-visualizer/caesars/caesars.
     HeaderComponent,
     SearchingVisualizerComponent,
     BasicAlgorithmsVisualizerComponent,
-    CaesarsComponent
+    CaesarsComponent,
+    FisherYatesComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

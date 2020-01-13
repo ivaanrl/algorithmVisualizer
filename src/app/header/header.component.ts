@@ -54,6 +54,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSearch(action: string, searchValue: any) {
+    //What type is searchValue?!
     this.searchingVisualizerServce.onEmitSearch(action, searchValue.value);
   }
 
@@ -68,7 +69,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
   }
 
-  onBasicStart(action: string) {
+  onBasicStart() {
+    let action: string;
+    switch (this.router.url) {
+      case '/basicAlgorithmVisualizer/caesars':
+        action = 'caesars';
+        break;
+      case '/basicAlgorithmVisualizer/FisherYates':
+        action = 'fisherYates';
+        break;
+    }
     this.basicAlgorithmService.onBasicAlgorithmEmit(action);
   }
 }

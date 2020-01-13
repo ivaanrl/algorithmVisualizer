@@ -4,6 +4,7 @@ import { SortingVisualizerComponent } from './sorting-visualizer/sorting-visuali
 import { SearchingVisualizerComponent } from './searching-visualizer/searching-visualizer.component';
 import { BasicAlgorithmsVisualizerComponent } from './basic-algorithms-visualizer/basic-algorithms-visualizer.component';
 import { CaesarsComponent } from './basic-algorithms-visualizer/caesars/caesars.component';
+import { FisherYatesComponent } from './basic-algorithms-visualizer/fisher-yates/fisher-yates.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sortingVisualizer', pathMatch: 'full' },
@@ -12,7 +13,10 @@ const routes: Routes = [
   {
     path: 'basicAlgorithmVisualizer',
     component: BasicAlgorithmsVisualizerComponent,
-    children: [{ path: 'caesars', component: CaesarsComponent }]
+    children: [
+      { path: 'caesars', component: CaesarsComponent },
+      { path: 'FisherYates', component: FisherYatesComponent }
+    ]
   }
 ];
 

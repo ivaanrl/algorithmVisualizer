@@ -191,9 +191,8 @@
       </form>
       <button
         *ngIf="router.url.includes('/basicAlgorithmVisualizer/')"
-        [routerLink]="['/basicAlgorithmVisualizer/caesars']"
         class="nav-item nav-link btn btn-header mr-3"
-        (click)="onBasicStart('caesars')"
+        (click)="onBasicStart()"
         [disabled]="disableButtons"
         style="color: white; background-color: #c62828;"
       >
@@ -203,11 +202,18 @@
     <button
       [routerLink]="['/basicAlgorithmVisualizer/caesars']"
       class="nav-item nav-link btn btn-header mr-3"
-      (click)="onBasic('Caesars')"
       [disabled]="disableButtons"
       style="color: white; background-color: #c62828;"
     >
       Caesar's Cipher
+    </button>
+    <button
+      [routerLink]="['/basicAlgorithmVisualizer/FisherYates']"
+      class="nav-item nav-link btn btn-header mr-3"
+      [disabled]="disableButtons"
+      style="color: white; background-color: #c62828;"
+    >
+      Fisher–Yates shuffle
     </button>
   </div>
 </nav>
