@@ -86,13 +86,16 @@ export class SortingVisualizerComponent implements OnInit, OnDestroy {
   }
 
   async mergeSort() {
+    this.disableButtonsService.buttonSwitchEmitter.emit();
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
     await this.sortingVisualizerService.mergeSort(
-      this.array.slice(),
+      this.array,
       document.getElementsByClassName('array-bar') as HTMLCollectionOf<
         HTMLElement
       >
     );
     this.disableButtons = false;
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
   }
 
   async quickSort() {

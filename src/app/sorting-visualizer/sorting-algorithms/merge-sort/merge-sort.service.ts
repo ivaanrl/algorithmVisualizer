@@ -1,89 +1,92 @@
 import { Injectable } from '@angular/core';
+import { SleepService } from 'src/app/shared/sleep.service';
 
 @Injectable({ providedIn: 'root' })
 export class MergeSortService {
-  getMergeSortAnimations(array: number[]) {
-    const animations: number[][] = [];
-    if (array.length <= 1) return array;
-    const auxiliaryArray = array.slice();
-    this.mergeSortHelper(
-      array,
-      0,
-      array.length - 1,
-      auxiliaryArray,
-      animations
-    );
-    return animations;
-  }
+  constructor(private sleepService: SleepService) {}
 
-  private mergeSortHelper(
-    mainArray: number[],
+  async merge(
+    array: number[],
     startIndex: number,
+    m: number,
     endIndex: number,
-    auxiliaryArray: number[],
-    animations: number[][]
+    arrayBars: HTMLCollectionOf<HTMLElement>
   ) {
-    if (startIndex === endIndex) return;
-    const middleIndex = Math.floor((startIndex + endIndex) / 2);
-    this.mergeSortHelper(
-      auxiliaryArray,
-      startIndex,
-      middleIndex,
-      mainArray,
-      animations
-    );
-    this.mergeSortHelper(
-      auxiliaryArray,
-      middleIndex + 1,
-      endIndex,
-      mainArray,
-      animations
-    );
-    this.merge(
-      mainArray,
-      startIndex,
-      middleIndex,
-      endIndex,
-      auxiliaryArray,
-      animations
-    );
-  }
+    console.log(m);
+    console.log(endIndex);
+    let n1 = m - startIndex + 1;
+    let n2 = endIndex - m;
 
-  private merge(
-    mainArray: number[],
-    startIndex: number,
-    middleIndex: number,
-    endIndex: number,
-    auxiliaryArray: number[],
-    animations: number[][]
-  ) {
+    const l = [...Array(n1)];
+    const r = [...Array(n2)];
+
+    for (let i = 0; i < n1; i++) {
+      l[i] = array[startIndex + i];
+    }
+    for (let j = 0; j < n2; j++) {
+      r[j] = array[m + 1 + j];
+    }
+
+    let i = 0;
+    let j = 0;
     let k = startIndex;
-    let i = startIndex;
-    let j = middleIndex + 1;
-    while (i <= middleIndex && j <= endIndex) {
-      animations.push([i, j]);
-      animations.push([i, j]);
-      if (auxiliaryArray[i] <= auxiliaryArray[j]) {
-        animations.push([k, auxiliaryArray[i]]);
-        mainArray[k++] = auxiliaryArray[i++];
+
+    while (i < n1 && j < n2) {
+      if (l[i] <= r[j]) {
+        await this.sleepService.sleep(5);
+        arrayBars[k].style.backgroundColor = '#D32F2F';
+        await this.sleepService.sleep(5);
+        arrayBars[k].style.backgroundColor = '#1976D2';
+
+        array[k] = l[i];
+        i++;
       } else {
-        animations.push([k, auxiliaryArray[j]]);
-        mainArray[k++] = auxiliaryArray[j++];
+        await this.sleepService.sleep(5);
+        arrayBars[k].style.backgroundColor = '#D32F2F';
+        await this.sleepService.sleep(5);
+        arrayBars[k].style.backgroundColor = '#1976D2';
+
+        array[k] = r[j];
+        j++;
       }
+      k++;
     }
 
-    while (i <= middleIndex) {
-      animations.push([i, i]);
-      animations.push([i, i]);
-      animations.push([k, auxiliaryArray[i]]);
-      mainArray[k++] = auxiliaryArray[i++];
+    while (i < n1) {
+      await this.sleepService.sleep(5);
+      arrayBars[k].style.backgroundColor = '#D32F2F';
+      await this.sleepService.sleep(5);
+      arrayBars[k].style.backgroundColor = '#1976D2';
+
+      array[k] = l[i];
+      i++;
+      k++;
     }
 
-    while (j <= endIndex) {
-      animations.push([j, j]);
-      animations.push([j, j]);
-      animations.push([k, auxiliaryArray[j]]);
-      mainArray[k++] = auxiliaryArray[j++];
+    while (j < n2) {
+      await this.sleepService.sleep(5);
+      arrayBars[k].style.backgroundColor = '#D32F2F';
+      await this.sleepService.sleep(5);
+      arrayBars[k].style.backgroundColor = '#1976D2';
+
+      array[k] = r[j];
+      j++;
+      k++;
+    }
+  }
+
+  async mergeSort(
+    array: number[],
+    startIndex: number,
+    endIndex: number,
+    arrayBars: HTMLCollectionOf<HTMLElement>
+  ) {
+    if (startIndex < endIndex) {
+      let m = startIndex + Math.floor((endIndex - startIndex) / 2);
+      await this.mergeSort(array, startIndex, m, arrayBars);
+      await this.mergeSort(array, m + 1, endIndex, arrayBars);
+
+      await this.merge(array, startIndex, m, endIndex, arrayBars);
     }
   }
 }
