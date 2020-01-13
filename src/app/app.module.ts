@@ -9,6 +9,7 @@ import { SearchingVisualizerComponent } from './searching-visualizer/searching-v
 import { BasicAlgorithmsVisualizerComponent } from './basic-algorithms-visualizer/basic-algorithms-visualizer.component';
 import { CaesarsComponent } from './basic-algorithms-visualizer/caesars/caesars.component';
 import { FisherYatesComponent } from './basic-algorithms-visualizer/fisher-yates/fisher-yates.component';
+import { GameOfLifeComponent } from './basic-algorithms-visualizer/game-of-life/game-of-life.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FisherYatesComponent } from './basic-algorithms-visualizer/fisher-yates
     SearchingVisualizerComponent,
     BasicAlgorithmsVisualizerComponent,
     CaesarsComponent,
-    FisherYatesComponent
+    FisherYatesComponent,
+    GameOfLifeComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

@@ -78,6 +78,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       case '/basicAlgorithmVisualizer/FisherYates':
         action = 'fisherYates';
         break;
+      case '/basicAlgorithmVisualizer/gameOfLife':
+        action = 'gameOfLife';
+        break;
     }
     this.basicAlgorithmService.onBasicAlgorithmEmit(action);
   }

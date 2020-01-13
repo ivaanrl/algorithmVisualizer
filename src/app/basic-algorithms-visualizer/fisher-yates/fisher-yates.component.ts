@@ -16,7 +16,6 @@ export class FisherYatesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.basicAlgorithmSub = this.basicAlgorithmService.basicAlgorithmEmitter.subscribe(
       (action: string) => {
-        console.log(action);
         switch (action) {
           case 'fisherYates':
             this.fisherYates();

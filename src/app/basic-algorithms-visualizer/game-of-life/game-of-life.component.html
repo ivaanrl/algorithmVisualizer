@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="rows" *ngFor="let row of grid">
+    <div
+      class="item"
+      *ngFor="let item of row"
+      [ngClass]="item === 1 ? 'alive' : 'dead'"
+    ></div>
+  </div>
+</div>
