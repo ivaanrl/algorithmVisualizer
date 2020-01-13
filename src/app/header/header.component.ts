@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { SearchingVisualizerService } from '../searching-visualizer/searching-visualizer.service';
 import { DisableButtonsService } from '../shared/disable-buttons.service';
+import { BasicAlgorithmService } from '../basic-algorithms-visualizer/basic-algorithm.service';
 
 @Component({
   selector: 'app-header',
@@ -11,15 +12,18 @@ import { DisableButtonsService } from '../shared/disable-buttons.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  disableButtons = true;
+  disableButtons = false;
   disableNewArray = false;
   buttonSwitchSub: Subscription;
   NewArrayButtonSub: Subscription;
+  textValue: string = '';
+  shiftValue: number;
 
   constructor(
     private sortingVisualizerService: SortingVisualizerService,
     private searchingVisualizerServce: SearchingVisualizerService,
     private disableButtonsService: DisableButtonsService,
+    private basicAlgorithmService: BasicAlgorithmService,
     private router: Router
   ) {}
 
@@ -55,5 +59,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onClick(string: string) {
     this.sortingVisualizerService.onAlgorithmEmit(string);
+  }
+
+  onInputChange() {
+    this.basicAlgorithmService.onInputChangeEmit(
+      this.textValue,
+      this.shiftValue
+    );
+  }
+
+  onBasicStart(action: string) {
+    this.basicAlgorithmService.onBasicAlgorithmEmit(action);
   }
 }

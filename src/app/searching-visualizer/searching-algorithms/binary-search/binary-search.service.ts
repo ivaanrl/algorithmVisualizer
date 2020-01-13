@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { QuickSortService } from 'src/app/sorting-visualizer/sorting-algorithms/quick-sort/quick-sort.service';
 import { SleepService } from 'src/app/shared/sleep.service';
-import { start } from 'repl';
 
 @Injectable({ providedIn: 'root' })
 export class BinarySearchService {

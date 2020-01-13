@@ -18,12 +18,17 @@
     <div class="navbar-nav">
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/sortingVisualizer']"
-          >Sorting Visualizer <span class="sr-only">(current)</span></a
-        >
+          >Sorting Visualizer
+        </a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/searchingVisualizer']"
           >Searching Visualizer</a
+        >
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/basicAlgorithmVisualizer']"
+          >Basic algorithms Visualizer</a
         >
       </li>
     </div>
@@ -155,5 +160,54 @@
         Fibonacci search
       </button>
     </div>
+  </div>
+  <div
+    class="navbar-nav ml-auto"
+    *ngIf="router.url.includes('/basicAlgorithmVisualizer')"
+  >
+    <div class="navbar-nav mr-5">
+      <form
+        class="form-inline my-2 my-lg-0"
+        *ngIf="router.url.includes('/caesars')"
+      >
+        <input
+          class="form-control mr-sm-2"
+          type="text"
+          placeholder="String to encode"
+          aria-label="Search"
+          name="textValue"
+          [(ngModel)]="textValue"
+          (ngModelChange)="onInputChange()"
+        />
+        <input
+          class="form-control mr-sm-2"
+          type="number"
+          placeholder="Shift Value"
+          aria-label="Search"
+          name="shiftValue"
+          [(ngModel)]="shiftValue"
+          (ngModelChange)="onInputChange()"
+        />
+      </form>
+      <button
+        *ngIf="router.url.includes('/basicAlgorithmVisualizer/')"
+        [routerLink]="['/basicAlgorithmVisualizer/caesars']"
+        class="nav-item nav-link btn btn-header mr-3"
+        (click)="onBasicStart('caesars')"
+        [disabled]="disableButtons"
+        style="color: white; background-color: #c62828;"
+      >
+        Start Animation
+      </button>
+    </div>
+    <button
+      [routerLink]="['/basicAlgorithmVisualizer/caesars']"
+      class="nav-item nav-link btn btn-header mr-3"
+      (click)="onBasic('Caesars')"
+      [disabled]="disableButtons"
+      style="color: white; background-color: #c62828;"
+    >
+      Caesar's Cipher
+    </button>
   </div>
 </nav>

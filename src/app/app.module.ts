@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { SortingVisualizerComponent } from './sorting-visualizer/sorting-visualizer/sorting-visualizer.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchingVisualizerComponent } from './searching-visualizer/searching-visualizer.component';
+import { BasicAlgorithmsVisualizerComponent } from './basic-algorithms-visualizer/basic-algorithms-visualizer.component';
+import { CaesarsComponent } from './basic-algorithms-visualizer/caesars/caesars.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SortingVisualizerComponent,
     HeaderComponent,
-    SearchingVisualizerComponent
+    SearchingVisualizerComponent,
+    BasicAlgorithmsVisualizerComponent,
+    CaesarsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

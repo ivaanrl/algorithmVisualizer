@@ -1,0 +1,23 @@
+<div class="mainContainer">
+  <div class="stringContainer">
+    <div
+      class="letter-square"
+      *ngFor="let letter of stringArray; let i = index"
+      style="background-color: #1976d2;"
+      id="{{ i }}"
+    >
+      {{ letter }}
+    </div>
+  </div>
+
+  <div class="cipherContainer">
+    <div
+      class="letter-square ciphered-array"
+      *ngFor="let letter of cipheredArray; let i = index"
+      style="background-color: #D32F2F;"
+      id="{{ i }}"
+    >
+      {{ letter }}
+    </div>
+  </div>
+</div>
