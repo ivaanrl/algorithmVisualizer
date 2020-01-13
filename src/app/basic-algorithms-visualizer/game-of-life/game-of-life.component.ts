@@ -9,7 +9,7 @@ import { BasicAlgorithmService } from '../basic-algorithm.service';
 })
 export class GameOfLifeComponent implements OnInit {
   basicAlgorithmSub: Subscription;
-  grid: number[][] = [...Array(20)].map(e => Array(20));
+  grid: number[][] = [...Array(50)].map(e => Array(50));
   constructor(private basicAlgorithmService: BasicAlgorithmService) {}
 
   ngOnInit() {
@@ -24,19 +24,17 @@ export class GameOfLifeComponent implements OnInit {
     );
 
     this.newGrid();
-    console.table(this.grid);
   }
 
   newGrid() {
-    for (let i = 0; i < 20; i++) {
-      for (let j = 0; j < 20; j++) {
+    for (let i = 0; i < 50; i++) {
+      for (let j = 0; j < 50; j++) {
         this.grid[i][j] = Math.round(Math.random());
       }
     }
   }
 
-  //Math.round(Math.random())
   gameOfLife() {
-    console.log('game of life');
+    this.basicAlgorithmService.gameOfLife(this.grid, this.grid.slice());
   }
 }

@@ -45,6 +45,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.NewArrayButtonSub.unsubscribe();
   }
 
+  activateButtons() {
+    this.disableButtons = false;
+  }
+
   switchButtons() {
     this.disableButtons = !this.disableButtons;
   }

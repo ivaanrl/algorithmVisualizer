@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class SearchingVisualizerComponent implements OnInit, OnDestroy {
   array: number[];
-  disableButtons = false;
+  disableButtons = true;
   searchSub: Subscription;
   constructor(
     private searchingVisualizerService: SearchingVisualizerService,
@@ -23,45 +23,29 @@ export class SearchingVisualizerComponent implements OnInit, OnDestroy {
       async ([action, searchValue]) => {
         switch (action) {
           case 'linearSearch':
-            this.disableButtonsService.buttonSwitchEmitter.emit();
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
             await this.linearSearch(+searchValue);
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
             this.disableButtons = false;
             break;
           case 'binarySearch':
-            this.disableButtonsService.buttonSwitchEmitter.emit();
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
             await this.binarySearch(+searchValue);
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
             this.disableButtons = false;
             break;
           case 'jumpSearch':
-            this.disableButtonsService.buttonSwitchEmitter.emit();
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
             await this.jumpSearch(+searchValue);
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
             this.disableButtons = false;
             break;
           case 'interpolationSearch':
-            this.disableButtonsService.buttonSwitchEmitter.emit();
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
             await this.interpolationSearch(+searchValue);
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
             this.disableButtons = false;
             break;
           case 'exponentialSearch':
-            this.disableButtonsService.buttonSwitchEmitter.emit();
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
             await this.exponentialSearch(+searchValue);
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
+            1;
             this.disableButtons = false;
             break;
           case 'fibonacciSearch':
-            this.disableButtonsService.buttonSwitchEmitter.emit();
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
             await this.fibonacciSearch(+searchValue);
-            this.disableButtonsService.switchNewArrayEmmiter.emit();
+
             this.disableButtons = false;
             break;
           case 'newArray':
@@ -70,6 +54,7 @@ export class SearchingVisualizerComponent implements OnInit, OnDestroy {
         }
       }
     );
+    this.disableButtons = false;
   }
 
   ngOnDestroy() {
@@ -93,63 +78,87 @@ export class SearchingVisualizerComponent implements OnInit, OnDestroy {
     }
   }
 
-  linearSearch(searchValue: number) {
-    this.searchingVisualizerService.linearSearch(
+  async linearSearch(searchValue: number) {
+    this.disableButtonsService.buttonSwitchEmitter.emit();
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    await this.searchingVisualizerService.linearSearch(
       this.array,
       searchValue,
       document.getElementsByClassName('array-item') as HTMLCollectionOf<
         HTMLElement
       >
     );
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    this.disableButtons = false;
   }
 
-  binarySearch(searchValue: number) {
-    this.searchingVisualizerService.binarySearch(
+  async binarySearch(searchValue: number) {
+    this.disableButtonsService.buttonSwitchEmitter.emit();
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    await this.searchingVisualizerService.binarySearch(
       this.array,
       searchValue,
       document.getElementsByClassName('array-item') as HTMLCollectionOf<
         HTMLElement
       >
     );
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    this.disableButtons = false;
   }
 
-  jumpSearch(searchValue: number) {
-    this.searchingVisualizerService.jumpSearch(
+  async jumpSearch(searchValue: number) {
+    this.disableButtonsService.buttonSwitchEmitter.emit();
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    await this.searchingVisualizerService.jumpSearch(
       this.array,
       searchValue,
       document.getElementsByClassName('array-item') as HTMLCollectionOf<
         HTMLElement
       >
     );
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    this.disableButtons = false;
   }
 
-  interpolationSearch(searchValue: number) {
-    this.searchingVisualizerService.interpolationSearch(
+  async interpolationSearch(searchValue: number) {
+    this.disableButtonsService.buttonSwitchEmitter.emit();
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    await this.searchingVisualizerService.interpolationSearch(
       this.array,
       searchValue,
       document.getElementsByClassName('array-item') as HTMLCollectionOf<
         HTMLElement
       >
     );
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    this.disableButtons = false;
   }
 
-  exponentialSearch(searchValue: number) {
-    this.searchingVisualizerService.exponentialSearch(
+  async exponentialSearch(searchValue: number) {
+    this.disableButtonsService.buttonSwitchEmitter.emit();
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    await this.searchingVisualizerService.exponentialSearch(
       this.array,
       searchValue,
       document.getElementsByClassName('array-item') as HTMLCollectionOf<
         HTMLElement
       >
     );
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    this.disableButtons = false;
   }
 
-  fibonacciSearch(searchValue: number) {
-    this.searchingVisualizerService.fibonacciSearch(
+  async fibonacciSearch(searchValue: number) {
+    this.disableButtonsService.buttonSwitchEmitter.emit();
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    await this.searchingVisualizerService.fibonacciSearch(
       this.array,
       searchValue,
       document.getElementsByClassName('array-item') as HTMLCollectionOf<
         HTMLElement
       >
     );
+    this.disableButtonsService.switchNewArrayEmmiter.emit();
+    this.disableButtons = false;
   }
 }

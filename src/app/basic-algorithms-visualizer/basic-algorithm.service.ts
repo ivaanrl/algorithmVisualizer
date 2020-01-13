@@ -1,12 +1,16 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { SleepService } from '../shared/sleep.service';
+import { GameOfLifeService } from './game-of-life/game-of-life.service';
 
 @Injectable({ providedIn: 'root' })
 export class BasicAlgorithmService {
   basicAlgorithmEmitter = new EventEmitter();
   inputChangedEmitter = new EventEmitter();
 
-  constructor(private sleepService: SleepService) {}
+  constructor(
+    private sleepService: SleepService,
+    private gameOfLifeService: GameOfLifeService
+  ) {}
 
   onBasicAlgorithmEmit(action: string) {
     this.basicAlgorithmEmitter.emit(action);
@@ -85,5 +89,9 @@ export class BasicAlgorithmService {
       arrayItems[rand].style.color = '#1976d2';
       await this.sleepService.sleep(400);
     }
+  }
+
+  gameOfLife(originalArray: number[][], nextGen: number[][]) {
+    this.gameOfLifeService.gameOfLife(originalArray, nextGen);
   }
 }

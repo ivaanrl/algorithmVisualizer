@@ -17,17 +17,26 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/sortingVisualizer']"
+        <a
+          class="nav-link"
+          [routerLink]="['/sortingVisualizer']"
+          (click)="activateButtons()"
           >Sorting Visualizer
         </a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/searchingVisualizer']"
+        <a
+          class="nav-link"
+          [routerLink]="['/searchingVisualizer']"
+          (click)="activateButtons()"
           >Searching Visualizer</a
         >
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/basicAlgorithmVisualizer']"
+        <a
+          class="nav-link"
+          [routerLink]="['/basicAlgorithmVisualizer']"
+          (click)="activateButtons()"
           >Basic algorithms Visualizer</a
         >
       </li>
