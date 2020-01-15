@@ -9,7 +9,7 @@ import { BasicAlgorithmService } from '../basic-algorithm.service';
 })
 export class GameOfLifeComponent implements OnInit {
   basicAlgorithmSub: Subscription;
-  grid: number[][] = [...Array(50)].map(e => Array(50));
+  grid: number[][] = [...Array(35)].map(e => Array(50));
   Modal: {
     title: string;
     text: string;
@@ -50,7 +50,7 @@ export class GameOfLifeComponent implements OnInit {
   }
 
   newGrid() {
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 35; i++) {
       for (let j = 0; j < 50; j++) {
         this.grid[i][j] = Math.round(Math.random());
       }

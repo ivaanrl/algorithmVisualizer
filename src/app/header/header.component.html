@@ -2,7 +2,9 @@
   class="navbar navbar-expand-lg navbar-dark"
   style="background-color: #D32F2F"
 >
-  <a class="navbar-brand" href="#">Algorithm Visualizer</a>
+  <a class="navbar-brand" href="#" style="font-size: 12px;"
+    >Algorithm Visualizer</a
+  >
   <button
     class="navbar-toggler"
     type="button"
@@ -21,6 +23,7 @@
           class="nav-link"
           [routerLink]="['/sortingVisualizer']"
           (click)="activateButtons()"
+          style="font-size: 12px;"
           >Sorting Visualizer
         </a>
       </li>
@@ -29,6 +32,7 @@
           class="nav-link"
           [routerLink]="['/searchingVisualizer']"
           (click)="activateButtons()"
+          style="font-size: 12px;"
           >Searching Visualizer</a
         >
       </li>
@@ -37,6 +41,7 @@
           class="nav-link"
           [routerLink]="['/basicAlgorithmVisualizer']"
           (click)="activateButtons()"
+          style="font-size: 12px;"
           >Basic algorithms Visualizer</a
         >
       </li>

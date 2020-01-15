@@ -31,7 +31,7 @@ export class SortingVisualizerService {
   newArray() {
     const array: number[] = [];
     for (let i = 0; i < 150; i++) {
-      array.push(this.randomIntFromInterval(5, 1000));
+      array.push(this.randomIntFromInterval(5, 500));
     }
     return array;
   }

@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private searchingVisualizerServce: SearchingVisualizerService,
     private disableButtonsService: DisableButtonsService,
     private basicAlgorithmService: BasicAlgorithmService,
-    private router: Router
+    public router: Router
   ) {}
 
   ngOnInit() {

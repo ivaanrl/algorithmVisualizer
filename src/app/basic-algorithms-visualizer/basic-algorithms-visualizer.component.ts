@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./basic-algorithms-visualizer.component.scss']
 })
 export class BasicAlgorithmsVisualizerComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(public router: Router) {}
 
   ngOnInit() {}
 }

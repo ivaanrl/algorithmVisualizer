@@ -13,8 +13,7 @@ export class GameOfLifeService {
   }
 
   async getNeighbours(ogArray: number[][], nextGen: number[][]) {
-    console.table(ogArray);
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 35; i++) {
       for (let j = 0; j < 50; j++) {
         let sumOfNeighbours = 0;
         if (i > 0) sumOfNeighbours += ogArray[i - 1][j];
