@@ -2,7 +2,7 @@
   class="navbar navbar-expand-lg navbar-dark"
   style="background-color: #D32F2F"
 >
-  <a class="navbar-brand" href="#" style="font-size: 12px;"
+  <a class="navbar-brand" [routerLink]="['/']" style="font-size: 12px;"
     >Algorithm Visualizer</a
   >
   <button
@@ -48,10 +48,10 @@
     </div>
     <div class="navbar-nav ml-auto" *ngIf="router.url === '/sortingVisualizer'">
       <button
-        class="nav-item nav-link btn btn-header mr-3"
+        class="nav-item nav-link btn btn-header1 mr-3"
         (click)="onClick('newArray')"
         [disabled]="disableNewArray"
-        style="color: white; background-color: #c62828;"
+        style="color: white; background-color: #1976D2;"
       >
         New Array
       </button>
@@ -110,6 +110,7 @@
     >
       <form class="form-inline my-2 my-lg-0">
         <input
+          style="font-size: 12px;"
           class="form-control mr-sm-2"
           type="number"
           placeholder="Search"
@@ -118,10 +119,10 @@
         />
       </form>
       <button
-        class="nav-item nav-link btn btn-header mr-3"
+        class="nav-item nav-link btn btn-header1 mr-3"
         (click)="onSearch('newArray', searchValue)"
         [disabled]="disableNewArray"
-        style="color: white; background-color: #c62828;"
+        style="color: white; background-color: #1976D2;"
       >
         New Array
       </button>
@@ -190,6 +191,7 @@
           placeholder="String to encode"
           aria-label="Search"
           name="textValue"
+          style="font-size: 12px;"
           [(ngModel)]="textValue"
           (ngModelChange)="onInputChange()"
         />
@@ -198,6 +200,7 @@
           type="number"
           placeholder="Shift Value"
           aria-label="Search"
+          style="font-size: 12px;"
           name="shiftValue"
           [(ngModel)]="shiftValue"
           (ngModelChange)="onInputChange()"
@@ -205,10 +208,10 @@
       </form>
       <button
         *ngIf="router.url.includes('/basicAlgorithmVisualizer/')"
-        class="nav-item nav-link btn btn-header mr-3"
+        class="nav-item nav-link btn btn-header1 mr-3"
         (click)="onBasicStart()"
         [disabled]="disableButtons"
-        style="color: white; background-color: #c62828;"
+        style="color: white; background-color: #1976D2;"
       >
         Start Animation
       </button>

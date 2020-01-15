@@ -65,6 +65,7 @@ export class CaesarsComponent implements OnInit, OnDestroy {
   }
 
   async caesars() {
+    this.cipheredArray = [];
     await this.basicAlgorithmService.caesars(
       this.stringArray,
       this.shiftValue,

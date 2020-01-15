@@ -43,36 +43,38 @@ export class SearchingVisualizerComponent implements OnInit, OnDestroy {
     this.newArray();
     this.searchSub = this.searchingVisualizerService.searchEmitter.subscribe(
       async ([action, searchValue]) => {
-        switch (action) {
-          case 'linearSearch':
-            await this.linearSearch(+searchValue);
-            this.disableButtons = false;
-            break;
-          case 'binarySearch':
-            await this.binarySearch(+searchValue);
-            this.disableButtons = false;
-            break;
-          case 'jumpSearch':
-            await this.jumpSearch(+searchValue);
-            this.disableButtons = false;
-            break;
-          case 'interpolationSearch':
-            await this.interpolationSearch(+searchValue);
-            this.disableButtons = false;
-            break;
-          case 'exponentialSearch':
-            await this.exponentialSearch(+searchValue);
-            1;
-            this.disableButtons = false;
-            break;
-          case 'fibonacciSearch':
-            await this.fibonacciSearch(+searchValue);
+        if (searchValue != '') {
+          switch (action) {
+            case 'linearSearch':
+              await this.linearSearch(+searchValue);
+              this.disableButtons = false;
+              break;
+            case 'binarySearch':
+              await this.binarySearch(+searchValue);
+              this.disableButtons = false;
+              break;
+            case 'jumpSearch':
+              await this.jumpSearch(+searchValue);
+              this.disableButtons = false;
+              break;
+            case 'interpolationSearch':
+              await this.interpolationSearch(+searchValue);
+              this.disableButtons = false;
+              break;
+            case 'exponentialSearch':
+              await this.exponentialSearch(+searchValue);
+              1;
+              this.disableButtons = false;
+              break;
+            case 'fibonacciSearch':
+              await this.fibonacciSearch(+searchValue);
 
-            this.disableButtons = false;
-            break;
-          case 'newArray':
-            this.newArray();
-            break;
+              this.disableButtons = false;
+              break;
+            case 'newArray':
+              this.newArray();
+              break;
+          }
         }
       }
     );

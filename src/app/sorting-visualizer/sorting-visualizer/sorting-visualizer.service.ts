@@ -31,7 +31,7 @@ export class SortingVisualizerService {
   newArray() {
     const array: number[] = [];
     for (let i = 0; i < 150; i++) {
-      array.push(this.randomIntFromInterval(5, 500));
+      array.push(this.randomIntFromInterval(5, 700));
     }
     return array;
   }
@@ -66,7 +66,7 @@ export class SortingVisualizerService {
       arrayBars
     );
     const arr: HTMLElement[] = [].slice.call(arrayBars);
-    for (let i = 0; i < arr.length + 1; i++) {
+    for (let i = 0; i < arr.length; i++) {
       await this.sleepService.sleep(5);
       arr[i].style.backgroundColor = '#40C4FF';
     }
