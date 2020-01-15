@@ -7,4 +7,69 @@
 <app-game-of-life
   *ngIf="router.url === '/basicAlgorithmVisualizer/gameOfLife'"
 ></app-game-of-life>
-<p *ngIf="router.url === '/basicAlgorithmVisualizer'">Basic algorithms</p>
+
+<div
+  *ngIf="router.url === '/basicAlgorithmVisualizer'"
+  class="container min-height-100 d-flex flex-row w-100 justify-content-center align-items-center flex-wrap"
+>
+  <div class="container">
+    <div class="row justify-content-center mb-5 ">
+      <div class="col-6">
+        <div class="card">
+          <h5 class="card-header">Caesar's Cipher</h5>
+          <div class="card-body">
+            <h5 class="card-title">
+              The Caesar's cipher is one of the simplest and most widely known
+              encryption techniques.
+            </h5>
+            <p class="card-text">
+              It is a substitution based encryption, in which every letter is
+              replaced by a letter some fixed number of positions down the
+              alphabet.
+            </p>
+            <a [routerLink]="['caesars']" class="btn btn-red">Encrypt now!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <h5 class="card-header">Fihser-Yates Shuffle</h5>
+          <div class="card-body">
+            <h5 class="card-title">
+              The Fisher-Yates shuffle is an algorithm for generating a random
+              permutation of a finite sequence.
+            </h5>
+            <p class="card-text">
+              The algorithm produces an unbiased permutation: every permutation
+              is equally likely.
+            </p>
+            <a
+              [routerLink]="['FisherYates']"
+              routerLinkActive="router-link-active"
+              class="btn btn-red"
+              >Randomize an array right now!</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card">
+          <h5 class="card-header">Game Of Life</h5>
+          <div class="card-body">
+            <h5 class="card-title">
+              The Game of Life is a cellular automaton devised by John Horton
+              Conway.
+            </h5>
+            <p class="card-text">
+              It's a zero-player game, meaning that its evolution is determined
+              by its initial state, requiring no further input
+            </p>
+            <a [routerLink]="['gameOfLife']" class="btn btn-red">Let's play!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
