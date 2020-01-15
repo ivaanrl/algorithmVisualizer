@@ -10,6 +10,23 @@ import { BasicAlgorithmService } from '../basic-algorithm.service';
 export class FisherYatesComponent implements OnInit, OnDestroy {
   basicAlgorithmSub: Subscription;
   array: number[] = [];
+  Modal: {
+    title: string;
+    text: string;
+    list: string[];
+
+    progressBar: number;
+  } = {
+    title: 'Fisher-Yates shuffle',
+    text:
+      'The Fisher-Yates shuffle is an algorithm for generating a random permutation of a finite sequence. The algorithm produces an unbiased permutation: every permutation is equally likely. How it works:',
+    list: [
+      'It iterates over every item in the array, while generating a new random position within the array range.',
+      "It switches the element that it's corresponding to the current iteration with the one in the randomly generated posistion.",
+      'At the end of the loop, the array will be sorted.'
+    ],
+    progressBar: 100
+  };
 
   constructor(private basicAlgorithmService: BasicAlgorithmService) {}
 
@@ -40,6 +57,10 @@ export class FisherYatesComponent implements OnInit, OnDestroy {
         HTMLElement
       >
     );
+  }
+
+  getProgressWidth() {
+    return `${this.Modal.progressBar}%`;
   }
 
   ngOnDestroy() {

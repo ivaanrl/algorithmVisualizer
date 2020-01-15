@@ -28,7 +28,18 @@ export class CaesarsComponent implements OnInit, OnDestroy {
   cipheredArray: string[] = [];
   inputAndShiftSub: Subscription;
   basicAlgorithmSub: Subscription;
+  Modal: {
+    title: string;
+    text: string;
 
+    progressBar: number;
+  } = {
+    title: "Caesar's cipher",
+    text:
+      "The Caesar's cipher is one of the simplest and most widely known encryption techniques. It is a substitution based encryption, in which every letter is replaced by a letter some fixed number of positions down the alphabet. ",
+
+    progressBar: 100
+  };
   constructor(private basicAlgorithmService: BasicAlgorithmService) {}
 
   ngOnInit() {
@@ -65,6 +76,10 @@ export class CaesarsComponent implements OnInit, OnDestroy {
         HTMLElement
       >
     );
+  }
+
+  getProgressWidth() {
+    return `${this.Modal.progressBar}%`;
   }
 
   ngOnDestroy() {

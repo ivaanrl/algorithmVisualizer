@@ -26,3 +26,27 @@
 .dead {
   background-color: #d3d3d3;
 }
+
+.btn-information {
+  position: fixed;
+  top: 90%;
+  left: 92%;
+  color: white;
+  background-color: #c62828 !important;
+}
+
+.btn-information:hover {
+  transform: scale(1.1);
+  background-color: #f44336 !important;
+}
+
+.btn-information:active {
+  transform: scale(1);
+  background-color: #c62828 !important;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
